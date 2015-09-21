@@ -38,12 +38,27 @@ int calDepth(Node* r){
 	return h;
 }
 
+//like:a(b,c(d,e))
+string printTree(Node* r){
+	if(r==NULL)
+		return "";
+	else if(r->left==NULL&&r->right==NULL)
+		return r->val;
+	else{
+		string lv = printTree(r->left);
+		string rv = printTree(r->right);
+		return r->val+"("+lv+","+rv+")";
+	}
+}
+
 int main(){
 	Node* n1 = new Node("a");
 	Node* n2 = new Node("b");
+	//Node n2 = Node{"b",NULL,NULL};
 	Node* n3 = new Node("c",n1,n2);
 	cout<<n1->val<<","<<n2->val<<endl;
-	cout<<calDepth(n3)<<","<<calDepth(n1)<<endl;	
+	cout<<calDepth(n3)<<","<<calDepth(n1)<<endl;
+	cout<<printTree(n3)<<","<<printTree(n1)<<endl;
 	stringstream s;
 	int i=1234;
 	string str;
