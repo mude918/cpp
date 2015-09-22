@@ -1,5 +1,13 @@
 #include "util.h"
 
+bool operator<(const Node &n1,const Node &n2){
+	return n1.val < n2.val;
+}
+
+bool operator>(const Node &n1,const Node &n2){
+	return n1.val > n2.val;
+}
+
 int calDepth(Node* r){
 	if(r==NULL)
 		return 0;
