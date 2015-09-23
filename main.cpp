@@ -41,6 +41,11 @@ int main(){
 		cout<<q2.top().val<<endl;
 		q2.pop();
 	}
-
+	
+	string s4 = "hello";
+	MyString *s5 = new MyString(s4.c_str());	
+	URL *s6 = new URL(s4.c_str());	
+	cout<<s5->size()<<endl;
+	cout<<s6->size()<<endl;
 	return 0;
 }
