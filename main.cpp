@@ -44,8 +44,14 @@ int main(){
 	
 	string s4 = "hello";
 	MyString *s5 = new MyString(s4.c_str());	
+	MyString s7 = MyString(s4.c_str());	
+	MyString s8=s7;
+	//s8=s7;
 	URL *s6 = new URL(s4.c_str());	
-	cout<<s5->size()<<endl;
-	cout<<s6->size()<<endl;
+	cout<<(*s5)[2]<<endl;
+	cout<<(*s6)[2]<<endl;
+	cout<<s7<<endl;
+	cout<<s8[2]<<endl;
+	//cout<<s6[3]<<endl;
 	return 0;
 }

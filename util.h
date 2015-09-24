@@ -28,17 +28,27 @@ class MyString{
 			mdata = new char[strlen(s)+1];
 			strcpy(mdata,s);
 		}
+		MyString(const MyString &rhs):mdata(new char[strlen(rhs.mdata)+1]){
+			strcpy(mdata,rhs.mdata);
+		}
 		~MyString(){
 			delete []mdata;
 		}
 		size_t size(){
 			return strlen(mdata);
 		}
+		char operator[](int i){
+			if(i>0&&i<strlen(mdata))
+				return mdata[i];
+		}
+		MyString& operator=(const MyString &str);
+		friend ostream& operator<<(ostream &os,const MyString &s);
 };
 
 class URL:public MyString{
 	public:
 		URL(const char *s):MyString(s){}
+		//URL(const char *s){}
 		~URL(){}
 };
 
