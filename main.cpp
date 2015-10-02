@@ -53,5 +53,25 @@ int main(){
 	cout<<s7<<endl;
 	cout<<s8[2]<<endl;
 	//cout<<s6[3]<<endl;
+
+
+	int A[54];
+
+	for(int i=0;i < 54;i++){
+		A[i] = i;
+	}
+	
+	int n,t;
+	for(int i=53;i > 0;i--){
+		srand((unsigned)time(NULL));
+		n = rand()%(i+1);
+		if(i!=n){
+			t = A[i];
+			A[i] = A[n];
+			A[n] = t;
+		}
+		cout<<A[i]<<' ';
+	}
+	cout<<endl;
 	return 0;
 }
