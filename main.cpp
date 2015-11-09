@@ -1,10 +1,12 @@
 #include "util.h"
+#include "avl.h"
 
 void testShuffle();
 void testStringStream();
 void testCalTreeDepth();
 void testPriorityQueue();
 void testMyString();
+void testAvlTree();
 
 void ref(int&& i){
 	cout<<"RF:"<<i<<endl;
@@ -29,17 +31,31 @@ int main(){
 	//testMyString();
 	//testShuffle();	
 
+
 	int a=1;
 	
 	ref(1);
 	pre(1);
 	move(a);
 	ref(std::move(a));
-	
 	cout<<a<<endl;
+
+	testAvlTree();
 	return 0;
 }
 
+void testAvlTree(){
+	AvlNode *r = new AvlNode(0);
+	bool taller = false;
+	for(int i=1;i<10;i++){
+		insertKeyToAvl(r, i, taller);		
+		cout<<printAvl(r)<<endl;
+	}
+	for(int i=1;i<10;i++){
+		delKeyFromAvl(r, i, taller);		
+		cout<<printAvl(r)<<endl;
+	}
+}
 
 void testMyString(){
 	string s4 = "hello";
@@ -52,7 +68,7 @@ void testMyString(){
 	cout<<(*s6)[2]<<endl;
 	cout<<s7<<endl;
 	cout<<s8[2]<<endl;
-	//cout<<s6[3]<<endl;
+	cout<<s6[3]<<endl;
 }
 
 void testPriorityQueue(){
