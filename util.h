@@ -8,6 +8,7 @@
 #include<cstdio>
 #include<cstdlib>
 #include<cstddef>
+#include<typeinfo>
 
 using namespace std;
 

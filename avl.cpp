@@ -161,20 +161,20 @@ int delKeyFromAvl(AvlNode* &root,int key,bool &lower){
 	return retFlag;
 }
 
-void RRote(AvlNode* &root){
-	AvlNode *lc;
-	lc = root->left;
-	root->left = lc->right;
-	lc->right = root;
-	root = lc;
-}
-
 void LRote(AvlNode* &root){
 	AvlNode *rc;
 	rc = root->right;
 	root->right = rc->left;
 	rc->left = root;
 	root = rc;
+}
+
+void RRote(AvlNode* &root){
+	AvlNode *lc;
+	lc = root->left;
+	root->left = lc->right;
+	lc->right = root;
+	root = lc;
 }
 
 string printAvl(AvlNode* &root){

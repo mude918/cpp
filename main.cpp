@@ -1,5 +1,6 @@
 #include "util.h"
 #include "avl.h"
+#include "rb_tree.h"
 
 void testShuffle();
 void testStringStream();
@@ -7,16 +8,13 @@ void testCalTreeDepth();
 void testPriorityQueue();
 void testMyString();
 void testAvlTree();
-
-void ref(int&& i){
-	cout<<"RF:"<<i<<endl;
-}
+void testRBTree();
 
 void ref(int& i){
-	cout<<"LF:"<<i<<endl;
+	cout<<"((LF:)())"<<i<<endl;
 }
 
-void pre(int&& i){
+void ref(int&& i){
 	ref(i);
 }
 
@@ -24,18 +22,31 @@ void move(int& a){
 	cout<<"move"<<endl;
 }
 
+template <class T> struct A{
+	T t;
+	void printType(){
+		cout<<typeid(t).name()<<endl;
+	}
+};
+
 int main(){
 	//testStringStream();
 	//testCalTreeDepth();
 	//testPriorityQueue();
 	//testMyString();
-	//testShuffle();	
-
+	//testShuffle();
+	testRBTree();	
+	A<int> a1;
+	A<char> a2;
+	A<string> a3;
+	a1.printType();
+	a2.printType();
+	a3.printType();
 
 	int a=1;
 	
+	ref(a);
 	ref(1);
-	pre(1);
 	move(a);
 	ref(std::move(a));
 	cout<<a<<endl;
@@ -54,6 +65,19 @@ void testAvlTree(){
 	for(int i=1;i<10;i++){
 		delKeyFromAvl(r, i, taller);		
 		cout<<printAvl(r)<<endl;
+	}
+}
+
+void testRBTree(){
+	RBTree<int> *root = new RBTree<int>(); 
+	for(int i= 0;i<10;i++){
+		root->insert(i);
+		cout<<root->print()<<endl;
+	}
+	for (int i = 1; i < 10; ++i)
+	{
+		root->del(i);
+		cout<<root->print()<<endl;
 	}
 }
 
