@@ -1,7 +1,7 @@
 FLAG = "-std=c++11"
 BIN = main
 OBJ = tree.o main.o mystring.o avl.o 
-HEAD = util.h avl.h rb_tree.h
+HEAD = util.h avl.h rb_tree.h skip_list.h
 $(BIN):$(OBJ)
 	g++ -o $(BIN) $(OBJ) $(FLAG)
 $OBJ:$(HEAD)

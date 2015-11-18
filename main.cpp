@@ -1,6 +1,7 @@
 #include "util.h"
 #include "avl.h"
 #include "rb_tree.h"
+#include "skip_list.h"
 
 void testShuffle();
 void testStringStream();
@@ -9,6 +10,7 @@ void testPriorityQueue();
 void testMyString();
 void testAvlTree();
 void testRBTree();
+void testSkipList();
 
 void ref(int& i){
 	cout<<"((LF:)())"<<i<<endl;
@@ -16,10 +18,6 @@ void ref(int& i){
 
 void ref(int&& i){
 	ref(i);
-}
-
-void move(int& a){
-	cout<<"move"<<endl;
 }
 
 template <class T> struct A{
@@ -35,7 +33,10 @@ int main(){
 	//testPriorityQueue();
 	//testMyString();
 	//testShuffle();
-	testRBTree();	
+	//testRBTree();
+	//testAvlTree();
+	testSkipList();
+
 	A<int> a1;
 	A<char> a2;
 	A<string> a3;
@@ -47,12 +48,37 @@ int main(){
 	
 	ref(a);
 	ref(1);
-	move(a);
 	ref(std::move(a));
 	cout<<a<<endl;
 
-	testAvlTree();
+
 	return 0;
+}
+
+void testSkipList(){
+	/*
+	for(int i=0;i<40;i++){
+		int rd = rand();
+		float frd = float(rd)/RAND_MAX;
+		int lvl = (int)(log(frd)/log(1.-P));
+		cout<<rd<<", "<<frd<<", "<<lvl<<endl;
+	}
+	*/
+	SkipList<int> sl;
+	sl.print();
+	sl.insert(6);
+	sl.print();
+	sl.insert(4);
+	sl.insert(1);
+	sl.insert(7);
+	sl.print();
+	if(sl.contains(6))
+		cout<<"has 6,haha!\n";
+	sl.del(6);
+	if(!sl.contains(6))
+		cout<<"haha,6 has gone\n";
+	sl.del(4);
+	sl.print();
 }
 
 void testAvlTree(){
