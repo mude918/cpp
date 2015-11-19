@@ -2,15 +2,18 @@
 #include "avl.h"
 #include "rb_tree.h"
 #include "skip_list.h"
+#include "hash_map.h"
 
 void testShuffle();
 void testStringStream();
 void testCalTreeDepth();
 void testPriorityQueue();
 void testMyString();
+void rightRefAndMoveSemanticTest();
 void testAvlTree();
 void testRBTree();
 void testSkipList();
+void hashMapTest();
 
 void ref(int& i){
 	cout<<"((LF:)())"<<i<<endl;
@@ -36,23 +39,19 @@ int main(){
 	//testRBTree();
 	//testAvlTree();
 	testSkipList();
-
-	A<int> a1;
-	A<char> a2;
-	A<string> a3;
-	a1.printType();
-	a2.printType();
-	a3.printType();
-
-	int a=1;
-	
-	ref(a);
-	ref(1);
-	ref(std::move(a));
-	cout<<a<<endl;
-
+	hashMapTest();
 
 	return 0;
+}
+
+void hashMapTest(){
+	HashMap<int,string> hm;
+	hm.put(1,"mude");
+	hm.put(2,"xijinping");
+	cout<<"hash map 1 to:"<<hm.get(1)<<endl;
+	cout<<"hash map 2 to:"<<hm.get(2)<<endl;
+	//cout<<hm.get(3)<<endl;
+	cout<<"hash map size:"<<hm.getSize()<<endl;
 }
 
 void testSkipList(){
@@ -92,6 +91,15 @@ void testAvlTree(){
 		delKeyFromAvl(r, i, taller);		
 		cout<<printAvl(r)<<endl;
 	}
+}
+
+void rightRefAndMoveSemanticTest(){
+	int a=1;
+	
+	ref(a);
+	ref(1);
+	ref(std::move(a));
+	cout<<a<<endl;
 }
 
 void testRBTree(){
