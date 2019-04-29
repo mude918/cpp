@@ -1,5 +1,4 @@
 # cpp
 c plus plus code for test 
-   
-dfd &nsbp    
+dfd  
 dfdf 
